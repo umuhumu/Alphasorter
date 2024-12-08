@@ -1,0 +1,45 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <script type="text/javascript">
+        // Ensures Office is ready before executing any Office-specific code.
+        Office.onReady(() => {
+            console.log("Office is ready.");
+        });
+
+        // Action function referenced in the manifest.
+        function action(event) {
+            // Example action: Add text to the email body.
+            Office.context.mailbox.item.body.setAsync(
+                "This is a test message from the add-in.",
+                { coercionType: Office.CoercionType.Text },
+                (asyncResult) => {
+                    if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+                        console.log("Body set successfully.");
+                    } else {
+                        console.error("Error:", asyncResult.error.message);
+                    }
+                    // Signals to Outlook that the action has completed.
+                    event.completed();
+                }
+            );
+        }
+
+        // Expose the function globally so the Office runtime can access it.
+        window.action = action;
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
