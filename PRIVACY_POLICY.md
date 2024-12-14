@@ -1,4 +1,4 @@
-# Privacy Policy for Alphasorter
+# Privacy policy for Alphasorter
 
 At Umuhumu, we value your privacy and are committed to being transparent about how our software operates. This privacy policy applies specifically to Alphasorter for Microsoft Outlook.
 
